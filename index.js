@@ -5,7 +5,7 @@ const minutes = loadTime.getMinutes();
 const hours = loadTime.getHours();
 let secondStart = 90 + (seconds * 6);
 let minuteStart = 90 + (minutes * 6) + (seconds * 0.1);
-let hourStart = 90 + (hours * 30) + (minutes * 0.25) + (seconds * 0.004166666666667)
+let hourStart = 90 + (hours * 30) + (minutes * 0.25) + (seconds * 0.004166666666667);
 const secondHand = document.querySelector(".second-hand");
 const minuteHand = document.querySelector(".min-hand");
 const hourHand = document.querySelector(".hour-hand");
@@ -16,9 +16,11 @@ function tickingClock() {
     secondStart = secondStart + 6;
     minuteHand.style['transform'] = `rotate(${minuteStart + 0.1}deg)`;
     minuteStart = minuteStart + 0.1;
-    hourHand.style['transform'] = `rotate(${hourStart + 0.001666666666667}deg)`;
-    hourStart = hourStart + 0.001666666666667;
   }, 1000);
+  setInterval(() => {
+    hourHand.style['transform'] = `rotate(${hourStart + 0.0001}deg)`;
+    hourStart = hourStart + 0.0001;
+  }, 1);
 }
 
 // This function sets the current time, although it does not update hour and minites until the turn over.
