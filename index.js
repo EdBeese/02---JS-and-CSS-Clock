@@ -1,7 +1,11 @@
-// This first function will move the clock around, but will always start at 12:00
-let secondStart = 90
-let minuteStart = 90
-let hourStart = 90
+// This first function will set the time and work like a real clock where minute and hour hands move incramentally
+const loadTime = new Date();
+const seconds = loadTime.getSeconds();
+const minutes = loadTime.getMinutes();
+const hours = loadTime.getHours();
+let secondStart = 90 + (seconds * 6);
+let minuteStart = 90 + (minutes * 6) + (seconds * 0.1);
+let hourStart = 90 + (hours * 30) + (minutes * 0.25) + (seconds * 0.004166666666667)
 const secondHand = document.querySelector(".second-hand");
 const minuteHand = document.querySelector(".min-hand");
 const hourHand = document.querySelector(".hour-hand");
@@ -35,4 +39,4 @@ function setTime() {
   }, 1000);
 }
 
-setTime();
+tickingClock();
